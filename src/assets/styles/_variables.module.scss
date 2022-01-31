@@ -1,0 +1,52 @@
+// Const Color
+$base-color-primary: #21bad5;
+$base-color-secondary: #b8b8d6;
+$base-color-success: #3bc862;
+$base-color-success-v2: #4b9f44;
+$base-color-info: #04aa594d;
+$base-color-warning: #edaa21;
+$base-color-danger: #d10d0d;
+$base-color-orange: #e46a26;
+$base-color-grey: #b8b8d6;
+$base-color-navy: #182958;
+$base-color-light: #e3eaef;
+$base-color-dark: #5a5a5a;
+$base-color-title: #ffffff4a;
+$base-color-disabled: #93cad3;
+$base-color-primary-hover: #1ab2cd;
+$base-color-primary-seer: #4894fe1a;
+$base-color-tooltip: rgba(0, 0, 0, 0.76);
+$base-color-new: #216fed;
+$base-color-inactive-primary: #9cc6a0;
+$base-color-inactive: #ededed;
+$base-color-inactive-icon: #dddddd;
+
+// Color For Bootstrap
+$theme-colors: (
+  "primary": $base-color-primary,
+  "secondary": $base-color-secondary,
+  "success": $base-color-success,
+  "info": $base-color-info,
+  "warning": $base-color-warning,
+  "danger": $base-color-danger,
+  "light": $base-color-light,
+  "dark": $base-color-dark,
+);
+
+$btn-focus-width: none;
+$btn-focus-box-shadow: none;
+
+$input-focus-border-color: $base-color-primary;
+$input-focus-box-shadow: 0 0 0 0.25rem rgba($base-color-primary, 0.25);
+
+:export {
+  primary: $base-color-primary;
+  secondary: $base-color-secondary;
+  success: $base-color-success;
+  info: $base-color-info;
+  warning: $base-color-warning;
+  danger: $base-color-danger;
+  light: $base-color-light;
+  dark: $base-color-dark;
+  inactive: $base-color-inactive;
+}

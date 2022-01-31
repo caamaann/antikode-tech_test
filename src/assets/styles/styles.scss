@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./variables.module";
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+body {
+  margin: 0;
+}
+
+// Scrollbar
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #c4c4c4;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #c4c4c4;
+}
+
+// FORM INPUT
+.form-group .form-label {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.form-control {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border-radius: 6px;
+  opacity: 1;
+  text-align: left;
+  font: normal normal normal 14px;
+  letter-spacing: 0px;
+  color: #222d17;
+  padding-left: 15px 20px;
+}
+
+.form-group .input-wrapper {
+  .form-control::placeholder,
+  .form-control {
+    font-size: 14px !important;
+  }
+}
+
+.right-icon-input {
+  position: absolute;
+  right: 20px;
+  top: 6px;
+  color: inherit;
+}
+
+.left-icon-input {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  color: inherit;
+}
+
+.left-icon-input + .form-control {
+  padding-left: 40px;
+}
+
+.form-control.end-icon {
+  padding-right: 40px;
+}
+
+input:disabled,
+select:disabled {
+  background-color: $base-color-inactive !important;
+  color: #9e9aa1 !important;
+  border: solid 1px $base-color-grey !important;
+}
+
+input[placeholder] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.form-validation {
+  color: $base-color-danger;
+  font-size: 12px;
+}
+
+.form-control.is-invalid {
+  background-image: none;
+  background-color: #fff6f7;
+}
+
+input:not(:placeholder-shown) {
+  border: 1px solid $base-color-primary;
+}
+
+// Modal
+.modal-dialog {
+  .modal-content {
+    border-radius: 1rem;
+    .modal-header {
+      padding: 1rem 2rem;
+      border-bottom: 1px solid transparent;
+      font-size: 1.5rem;
+      font-weight: bolder;
+      .btn-close {
+        font-size: 1rem;
+        font-weight: normal;
+      }
+    }
+    .modal-body {
+      padding: 1.5rem 2rem !important;
+    }
+  }
+}
+
+// Background item event
+.item-event {
+  &.indigo {
+    @apply tw-bg-indigo-500;
+  }
+  &.gray {
+    @apply tw-bg-gray-500;
+  }
+  &.green {
+    @apply tw-bg-green-500;
+  }
+  &.blue {
+    @apply tw-bg-blue-500;
+  }
+  &.red {
+    @apply tw-bg-red-500;
+  }
+  &.purple {
+    @apply tw-bg-purple-500;
+  }
+  &.pink {
+    @apply tw-bg-pink-500;
+  }
+}

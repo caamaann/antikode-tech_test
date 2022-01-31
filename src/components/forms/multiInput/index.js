@@ -95,7 +95,7 @@ const CreatableInputOnly = ({ handleValue, propsValue, label }) => {
   };
 
   return (
-    <div className="form-group">
+    <div className="form-group mb-3">
       {label && <label className="form-label">{label}</label>}
       <CreatableSelect
         components={{ Input }}

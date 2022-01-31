@@ -1,16 +1,7 @@
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setEventData, setEventModal } from "../../../store/actions/event";
-
-const labelsClasses = [
-  "indigo",
-  "gray",
-  "green",
-  "blue",
-  "red",
-  "purple",
-  "pink",
-];
+import { labelsClasses } from "../../../utils/constant";
 
 const Index = ({ data, onSetEventModal, onSetEventData, dataEvent }) => {
   const [color, setColor] = useState([]);
@@ -63,7 +54,8 @@ const Index = ({ data, onSetEventModal, onSetEventData, dataEvent }) => {
           return (
             <div
               key={key}
-              className={`item-event tw-rounded tw-truncate ${color[key]} tw-flex tw-items-center tw-justify-start tw-cursor-pointer tw-px-2 tw-w-full`}
+              // className={`item-event tw-rounded tw-truncate ${color[key]} tw-flex tw-items-center tw-justify-start tw-cursor-pointer tw-px-2 tw-w-full`}
+              className={`item-event tw-rounded tw-truncate ${list.color} tw-flex tw-items-center tw-justify-start tw-cursor-pointer tw-px-2 tw-w-full`}
               onClick={() => setModal("edit", true, list)}
             >
               {list.name}

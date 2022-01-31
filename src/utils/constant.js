@@ -21,3 +21,13 @@ export const dayLong = Object.freeze([
 ]);
 
 export const dayShortest = Object.freeze(["M", "T", "W", "T", "F", "S", "S"]);
+
+export const labelsClasses = [
+  "indigo",
+  "gray",
+  "green",
+  "blue",
+  "red",
+  "purple",
+  "pink",
+];

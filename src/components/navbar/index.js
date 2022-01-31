@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import logo from "../../assets/img/calendar_26.png";
+import logo from "../../assets/img/logo.png";
 import LogoGit from "../../assets/icon/icon-git";
 
 const Navbar = ({ toggle, chosenDate, isMobile }) => {
@@ -16,7 +16,7 @@ const Navbar = ({ toggle, chosenDate, isMobile }) => {
         )}
         <figure className="tw-relative tw-flex tw-items-center tw-m-0">
           <img src={logo} alt="calendar" className="tw-mr-2 tw-w-12 tw-h-12" />
-          <figcaption className="tw-absolute tw-left-4 tw-text-blue-500 tw-font-semibold">
+          <figcaption className="tw-absolute tw-left-4 tw-top-4 tw-text-slate-900 tw-font-semibold">
             {chosenDate.format("DD")}
           </figcaption>
         </figure>

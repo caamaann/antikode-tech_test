@@ -7,6 +7,7 @@ import Button from "../../components/button";
 import Event from "../../store/actions/event";
 import { formInput } from "../../components/forms";
 import MultiInputEmail from "../../components/forms/multiInput";
+import ColorInput from "../../components/forms/color";
 
 let Add = ({
   handleClose,
@@ -16,6 +17,7 @@ let Add = ({
   pending_post,
 }) => {
   const [emailInvite, setEmailInvite] = useState([]);
+  const [colorChosen, setColorChosen] = useState("indigo");
   const dispatch = useDispatch();
 
   const onSubmit = ({ name, date, time }) => {
@@ -25,6 +27,7 @@ let Add = ({
       emailInvite: temp,
       date,
       time,
+      color: colorChosen,
     };
 
     const callback = () => {
@@ -74,6 +77,12 @@ let Add = ({
             label="Invitees by email"
             handleValue={handleValue}
             propsValue={emailInvite}
+          />
+          <ColorInput
+            label="Color"
+            handleValue={(val) => setColorChosen(val)}
+            propsValue={colorChosen}
+            required
           />
           <div className="tw-flex tw-justify-end tw-gap-4 tw-mt-4">
             <Button

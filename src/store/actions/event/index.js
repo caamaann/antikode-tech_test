@@ -46,19 +46,27 @@ const post = (param, callback) => (dispatch) => {
   dispatch(actionPending(POST_EVENT_PENDING));
   let data = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
-  let totalEvent = data.filter((item) => item.date === param.date).length;
-  if (totalEvent < 3) {
-    let id = uuidv4();
+  let listEventSameDay = data.filter((item) => item.date === param.date);
+  if (listEventSameDay.length < 3) {
+    if (
+      listEventSameDay.filter((item) => item.color === param.color).length === 0
+    ) {
+      let id = uuidv4();
 
-    param.id = id;
-    let newData = [...data, param];
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(newData));
+      param.id = id;
+      let newData = [...data, param];
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(newData));
 
-    dispatch(actionSuccess(POST_EVENT_SUCCESS, newData));
-    if (callback) {
-      callback();
+      dispatch(actionSuccess(POST_EVENT_SUCCESS, newData));
+      if (callback) {
+        callback();
+      }
+      return newData;
+    } else {
+      let err = "Cannot create event with same color in same day";
+      dispatch(actionError(POST_EVENT_ERROR, err));
+      Swal.fire("Warning", err, "warning");
     }
-    return newData;
   } else {
     let err = "Cannot create event more than 3 in same day";
     dispatch(actionError(POST_EVENT_ERROR, err));
@@ -70,18 +78,29 @@ const put = (param, callback) => (dispatch) => {
   dispatch(actionPending(PUT_EVENT_PENDING));
   let data = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
-  let idxItem = data.map((item) => item.id).indexOf(param.id);
-  if (idxItem > -1) {
-    data[idxItem] = param;
-  }
+  let listEventSameDay = data.filter((item) => item.date === param.date);
+  if (
+    listEventSameDay.filter(
+      (item) => item.color === param.color && item.id !== param.id
+    ).length === 0
+  ) {
+    let idxItem = data.map((item) => item.id).indexOf(param.id);
+    if (idxItem > -1) {
+      data[idxItem] = param;
+    }
 
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 
-  dispatch(actionSuccess(PUT_EVENT_SUCCESS, data));
-  if (callback) {
-    callback();
+    dispatch(actionSuccess(PUT_EVENT_SUCCESS, data));
+    if (callback) {
+      callback();
+    }
+    return data;
+  } else {
+    let err = "Cannot create event with same color in same day";
+    dispatch(actionError(PUT_EVENT_ERROR, err));
+    Swal.fire("Warning", err, "warning");
   }
-  return data;
 };
 
 const deleted = (param, callback) => (dispatch) => {

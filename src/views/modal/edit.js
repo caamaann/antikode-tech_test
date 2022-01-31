@@ -7,6 +7,7 @@ import Button from "../../components/button";
 import Event from "../../store/actions/event";
 import { formInput } from "../../components/forms";
 import MultiInputEmail from "../../components/forms/multiInput";
+import ColorInput from "../../components/forms/color";
 
 let Index = ({
   handleClose,
@@ -16,8 +17,12 @@ let Index = ({
   chosenDate,
   pending_put,
   invitedEmail,
+  chooseColor,
+  anyTouched,
+  ...props
 }) => {
   const [emailInvite, setEmailInvite] = useState(invitedEmail);
+  const [colorChosen, setColorChosen] = useState(chooseColor);
   const dispatch = useDispatch();
 
   const onSubmit = ({ name, date, time }) => {
@@ -28,6 +33,7 @@ let Index = ({
       emailInvite: temp,
       date,
       time,
+      color: colorChosen,
     };
 
     const callback = () => {
@@ -87,6 +93,13 @@ let Index = ({
             label="Invitees by email"
             handleValue={handleValue}
             propsValue={emailInvite}
+          />
+          <ColorInput
+            label="Color"
+            handleValue={(val) => setColorChosen(val)}
+            propsValue={colorChosen}
+            isError={anyTouched && !colorChosen}
+            required
           />
           <div className="tw-flex tw-justify-between tw-mt-4">
             <Button
@@ -152,6 +165,7 @@ const mapStateToProps = ({
 }) => {
   let initialValues = {};
   let invitedEmail = [];
+  let chooseColor;
   if (detailData) {
     initialValues = {
       name: detailData.name,
@@ -162,9 +176,17 @@ const mapStateToProps = ({
       value: item,
       label: item,
     }));
+    chooseColor = detailData.color;
   }
 
-  return { initialValues, pending_put, detailData, invitedEmail, chosenDate };
+  return {
+    initialValues,
+    pending_put,
+    detailData,
+    invitedEmail,
+    chosenDate,
+    chooseColor,
+  };
 };
 
 const mapDispatchToProps = () => {
